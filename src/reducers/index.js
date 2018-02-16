@@ -1,7 +1,11 @@
-import { combineReducers } from 'redux'
+import { combineReducers } from 'redux';
 
-const currencyApp = combineReducers({
+import star from './star';
+import currencies from './currencies';
 
-});
+const rootReducer = combineReducers([
+    star,
+    currencies,
+]);
 
-export default currencyApp
+export default rootReducer;
