@@ -11,10 +11,12 @@ class Currency extends Component {
         const { data, Options, index, dispatch } = this.props;
         return (
             <tr style={{"display": this.state.disabled}}>
-                <td>{ data.currency }</td>
-                <td>{ data.mid } { data.code }</td>
-                <td>
-                    <Options dispatch={dispatch} index={index} />
+                <td className="currency">{ data.currency }</td>
+                <td className="mid">{ data.mid } { data.code }</td>
+                <td className="options">
+                    {Options &&
+                        <Options dispatch={dispatch} index={index}/>
+                    }
                 </td>
             </tr>
         );

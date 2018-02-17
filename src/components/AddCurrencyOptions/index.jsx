@@ -2,22 +2,31 @@ import React, { Component } from 'react';
 import {addItem, hasItem} from '../../actions/storage';
 
 class AddCurrencyOptions extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            isDisabled: hasItem(props.index),
+            disabledStyle: hasItem(props.index) ? "btn-disabled" : ""
+        }
+    }
     addToFavourites(index) {
         let self = this;
         return function() {
             addItem(index);
-            self.forceUpdate();
+
+            self.setState({
+                isDisabled: hasItem(self.props.index),
+                disabledStyle: hasItem(self.props.index) ? "btn-disabled" : ""
+            });
         }
     }
     render() {
         const { index } = this.props;
 
-        const isDisabled = hasItem(index);
-        const disabledStyle = (isDisabled) ? "btn-disabled" : "";
-
         return (
             <div>
-                <button disabled={isDisabled} onClick={this.addToFavourites(index)} className={`${disabledStyle} btn btn-outline-warning`}>Favourite</button>
+                <button disabled={this.state.isDisabled} onClick={this.addToFavourites(index)} className={`${this.state.disabledStyle} btn btn-outline-warning`}>Favourite</button>
             </div>
         );
     }
