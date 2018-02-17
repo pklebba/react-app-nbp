@@ -4,7 +4,7 @@ import Currency from '../Currency';
 
 class CurrencyList extends Component {
     render() {
-        const { currencies } = this.props;
+        const { currencies, options, dispatch } = this.props;
         return (
             <table className="table">
                 <thead>
@@ -16,7 +16,7 @@ class CurrencyList extends Component {
                 </thead>
                 <tbody>
                     {currencies.map((x, y) =>
-                        <Currency data={x} index={y}/>
+                        <Currency dispatch={dispatch} data={x} index={y} key={y} Options={options}/>
                     )}
                 </tbody>
             </table>

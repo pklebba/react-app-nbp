@@ -2,6 +2,7 @@ import {
     RECEIVE_CURRENCIES,
     REQUEST_CURRENCIES
 } from "../actions/fetch";
+import {RECEIVE_STORAGE} from "../actions/storage";
 
 function currencies(
     state = {
@@ -14,16 +15,16 @@ function currencies(
         case REQUEST_CURRENCIES:
             return Object.assign({}, state, {
                 isFetching: true,
-            })
+            });
         case RECEIVE_CURRENCIES:
+        case RECEIVE_STORAGE:
             return Object.assign({}, state, {
                 isFetching: false,
-                currencies: action.currencies,
-                lastUpdate: new Date().toLocaleTimeString()
-            })
+                currencies: action.currencies
+            });
+        default:
+            return state;
     }
-
-    return state;
 }
 
 

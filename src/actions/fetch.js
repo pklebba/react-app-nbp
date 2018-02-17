@@ -16,13 +16,15 @@ function receiveCurrencies(json) {
     }
 }
 
+export function request() {
+    return fetch('http://api.nbp.pl/api/exchangerates/tables/A/?format=json')
+        .then(response => response.json());
+}
 
 export default function fetchCurrencies() {
     return (dispatch) => {
         dispatch( requestCurrencies() );
 
-        return fetch('http://api.nbp.pl/api/exchangerates/tables/A/?format=json')
-            .then(response => response.json())
-            .then(currencies => dispatch(receiveCurrencies(currencies[0].rates)))
+        return request().then(currencies => dispatch(receiveCurrencies(currencies[0].rates)));
     }
 }
