@@ -5,10 +5,8 @@ import fetchStorage from '../../actions/storage';
 class RemoveCurrencyOptions extends Component {
     removeFromFavourites(index, dispatch) {
         return function() {
-            console.log(index);
             removeItem(index);
             dispatch(fetchStorage())
-
         }
     }
     render() {

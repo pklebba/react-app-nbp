@@ -15,8 +15,8 @@ class CurrencyList extends Component {
                     </tr>
                 </thead>
                 <tbody>
-                    {currencies.map((x, y) =>
-                        <Currency dispatch={dispatch} data={x} index={y} key={y} Options={options}/>
+                    {currencies.map((data, index) =>
+                        <Currency dispatch={dispatch} data={data} index={index} key={index} Options={options}/>
                     )}
                 </tbody>
             </table>
