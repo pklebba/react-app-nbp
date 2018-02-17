@@ -56,3 +56,7 @@ export function hasItem(key) {
 
     return data.includes(key);
 }
+
+export function removeAllItems() {
+    return localStorage.removeItem('storage');
+}

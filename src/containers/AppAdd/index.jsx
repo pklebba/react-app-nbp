@@ -14,7 +14,6 @@ class AppAdd extends Component {
 
         this.handleRefreshClick = this.handleRefreshClick.bind(this)
     }
-
     componentDidMount() {
         const {dispatch} = this.props;
         dispatch(fetchCurrencies())
@@ -25,14 +24,13 @@ class AppAdd extends Component {
 
         dispatch(fetchCurrencies())
     }
-
     render() {
         const { isFetching, currencies } = this.props;
 
         return (
             <div className="container my-5">
                 <div className="d-flex align-content-center mb-5">
-                    <h1 className="mr-2">Add new currency</h1>
+                    <h1>Add new currency</h1>
                 </div>
 
                 {isFetching && <h2>Loading data...</h2>}
